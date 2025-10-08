@@ -1,0 +1,12 @@
+name: posto  
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - scipy
+  - pip
+  - pip:
+    - mpmath
+    - matplotlib 
+    - tqdm

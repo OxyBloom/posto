@@ -1,0 +1,72 @@
+>> c =  0.6
+100 67
+Time Taken:  0.34308338165283203
+Safety:  True
+[Trajs] Safe, Unsafe:  67 0
+[Log] Safe, Unsafe:  98 0
+Total Trajectories Generated:  100 ; Valid Trajectories:  67
+=====================
+
+
+>> c =  0.7
+100 86
+Time Taken:  0.3324871063232422
+Safety:  True
+[Trajs] Safe, Unsafe:  86 0
+[Log] Safe, Unsafe:  115 0
+Total Trajectories Generated:  100 ; Valid Trajectories:  86
+=====================
+
+
+>> c =  0.8
+100 14
+200 35
+300 57
+Time Taken:  0.9358773231506348
+Safety:  True
+[Trajs] Safe, Unsafe:  22 0
+[Log] Safe, Unsafe:  97 0
+Total Trajectories Generated:  300 ; Valid Trajectories:  57
+=====================
+
+
+>> c =  0.9
+100 63
+200 120
+Time Taken:  0.646981954574585
+Safety:  True
+[Trajs] Safe, Unsafe:  57 0
+[Log] Safe, Unsafe:  97 0
+Total Trajectories Generated:  200 ; Valid Trajectories:  120
+=====================
+
+
+>> c =  0.99
+100 66
+200 135
+300 199
+400 263
+500 323
+600 396
+700 470
+800 540
+900 614
+1000 685
+1100 752
+1200 822
+1300 883
+1400 948
+1500 1015
+1600 1082
+1700 1141
+1800 1206
+Time Taken:  6.101810932159424
+Safety:  True
+[Trajs] Safe, Unsafe:  65 0
+[Log] Safe, Unsafe:  93 0
+Total Trajectories Generated:  1800 ; Valid Trajectories:  1206
+=====================
+
+
+[0.34308338165283203, 0.3324871063232422, 0.9358773231506348, 0.646981954574585, 6.101810932159424]
+[True, True, True, True, True]

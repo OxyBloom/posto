@@ -29,7 +29,7 @@ VIZ_PER_COVERAGE=20
 ARTIFACT_EVAL=True
 
 # Here: please choose the figure to regenerate
-FIG='5(a)' # Choose from {3(a), 3(b), 3(c), 4(a), 4(b), 4(c), 4(d), 5(a), 5(b), 5(c), 5(d)}
+FIG='3(a)' # Choose from {3(a), 3(b), 3(c), 4(a), 4(b), 4(c), 4(d), 5(a), 5(b), 5(c), 5(d)}
 
 if ARTIFACT_EVAL==False:
     
@@ -97,5 +97,19 @@ else:
     else:
         print("No such figures found!")
         exit(0)
+
+# AutMod specific parameters
+AUTMOD_PROBABILITY_LOG = 5  # This corresponds to 20% probability (100/5 = 20%)
+AUTMOD_DT = 0.01
+AUTMOD_DELTA_STATE = 0.002
+AUTMOD_DELTA_LOG = 0.02
+
+# Override default parameters when using AutMod
+if 'AUTMOD' in globals() or True:  # Allow AutMod parameters to be used
+    PROBABILITY_LOG = AUTMOD_PROBABILITY_LOG
+    DT = AUTMOD_DT
+    DELTA_STATE = AUTMOD_DELTA_STATE
+    DELTA_LOG = AUTMOD_DELTA_LOG
+    print("Parameters set for AutMod (20% log probability)")
     
 
