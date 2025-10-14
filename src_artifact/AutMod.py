@@ -732,7 +732,7 @@ if __name__ == "__main__":
     # More appropriate safety constraint for AutMod dynamics
     # The system drives x negative from positive initial conditions
     # Use a less restrictive constraint that some trajectories can satisfy
-    unsafe=-0.26  # Changed from -0.10 to -0.30 for more realistic safety analysis
+    unsafe=-0.3  # Changed from -0.10 to -0.30 for more realistic safety analysis
     state=0
     op='le'
 
