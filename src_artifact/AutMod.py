@@ -404,21 +404,21 @@ class AutMod:
         elif len(safeTrajs)>0 and len(unsafeTrajs)==0:
             AutMod.vizTrajsVal2D(safeTrajs,logUn,unsafe,state,save=sv,name="AutModSafeTrajs")
         elif len(unsafeTrajs)>0:
-            AutMod.vizTrajsVal2D(unsafeTrajs,logUn,unsafe,state,save=True,name="AutModUnsafeTrajs")
+            AutMod.vizTrajsVal2D(unsafeTrajs,logUn,unsafe,state,save=SAVE,name="AutModUnsafeTrajs")
 
 
     def showBehavior(initSet,T):
         print("Plotting Behavior")
         trajsL=AutMod.getRandomTrajs(initSet,T,10)
-        AutMod.vizTrajs(trajsL,save=True,name="AutModBehavior")
+        AutMod.vizTrajs(trajsL,save=False,name="AutModBehavior")
     
     def showLogGeneration(initSet,T):
         trajsL=AutMod.getRandomTrajs(initSet,T,1)
         logger=GenLog(trajsL[0])
         logUn=logger.genLog()[0]
-        AutMod.vizTrajs(trajsL,logUn,save=True,name="AutModLog3D")
-        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=-0.15,state=0,save=True,name="AutModLogS0")
-        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=None,state=1,save=True,name="AutModLogS1")
+        AutMod.vizTrajs(trajsL,logUn,save=SAVE,name="AutModLog3D")
+        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=-0.15,state=0,save=SAVE,name="AutModLogS0")
+        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=None,state=1,save=SAVE,name="AutModLogS1")
     
     def showValidTrajs(initSet,T,K):
         trajsL=AutMod.getRandomTrajs(initSet,T,1)
@@ -436,9 +436,9 @@ class AutMod:
                 break
         ts=time.time()-ts
         print("Time taken: ",ts)
-        AutMod.vizTrajsVal(valTrajs[:5],inValTrajsIt[:5],logUn,save=True,name="AutModValTrajs")
-        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=-0.15,state=0,save=True,name="AutModValTrajsS0")
-        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=None,state=1,save=True,name="AutModValTrajsS1")
+        AutMod.vizTrajsVal(valTrajs[:5],inValTrajsIt[:5],logUn,save=SAVE,name="AutModValTrajs")
+        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=-0.15,state=0,save=SAVE,name="AutModValTrajsS0")
+        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=None,state=1,save=SAVE,name="AutModValTrajsS1")
 
     def varyC(initSet,T,unsafe,state,op):
         cList=[0.6,0.7,0.8,0.9,0.99]
@@ -453,7 +453,7 @@ class AutMod:
 
         print(tList)
         print(sList)
-        AutMod.vizVaryC(cList,sList,tList,save=True,name="AutModVaryC")
+        AutMod.vizVaryC(cList,sList,tList,save=SAVE,name="AutModVaryC")
 
     def testSafeScenario(initSet, T):
         """
@@ -523,7 +523,7 @@ class AutMod:
         sList = []
         
         for probVal in probList:
-            print(f">> PROBABILITY_LOG = {probVal} ({100/probVal:.1f}%)")
+            # print(f">> PROBABILITY_LOG = {probVal} ({100/probVal:.1f}%)")
             
             # For this experiment, we would need to temporarily change PROBABILITY_LOG
             # Since we can't easily modify Parameters.py dynamically, we'll simulate different scenarios
@@ -574,13 +574,13 @@ class AutMod:
             sList.append(isSafe)
             
             print(f"   Time: {ts:.2f}s, Total Trajs: {totTrajs*100}, Valid: {len(valTrajs)}, Safe: {isSafe}")
-            print("=" * 30)
+            # print("=" * 30)
         
         # Calculate percentage of valid samples
         percentageValidSamples = [(vs / ts) * 100 if ts > 0 else 0 for vs, ts in zip(validSamplesList, totalSamplesList)]
         
         # Create the visualization
-        AutMod.vizVaryLogProb(probList, tList, totalSamplesList, validSamplesList, percentageValidSamples, save=True, name="AutModVaryLogProb")
+        AutMod.vizVaryLogProb(probList, tList, totalSamplesList, validSamplesList, percentageValidSamples, save=SAVE, name="AutModVaryLogProb")
         
         print("Logging Probability Results:")
         print("PROBABILITY_LOG:", probList)
@@ -712,47 +712,40 @@ class AutMod:
 
 # Example usage and experiments
 if __name__ == "__main__":
-    # Initial conditions
-    # x_init = 0.1
-    # y_init = 0.1
-    # T = 1000  # Time steps
-    
-    # initState = (x_init, y_init)
-    # initSet = ([0.0, 0.2], [0.0, 0.2])
     
     # # Run all experiments
     # AutMod.runAllExperiments(initSet, T)
-
-    x_init=0.8
-    y_init=0.8
+    # Initial conditions
+    x_init=0.2
+    y_init=0.2
+    # x_init=-0.2
+    # y_init=-0.2
     T=2000
+    SAVE = False
 
     initState=(x_init,y_init)
     initSet=([0.8,1],[0.8,1])
+    # initSet=([-0.2,0.2],[-0.2,0.2])
 
     ########### Results ########### 
 
     # More appropriate safety constraint for AutMod dynamics
     # The system drives x negative from positive initial conditions
     # Use a less restrictive constraint that some trajectories can satisfy
-    unsafe=-0.30  # Changed from -0.10 to -0.30 for more realistic safety analysis
+    unsafe=-0.26  # Changed from -0.10 to -0.30 for more realistic safety analysis
     state=0
     op='le'
 
 
 
     # Run comprehensive safe/unsafe testing
-    AutMod.runSafeUnsafeTests(initSet, T)
+    # AutMod.runSafeUnsafeTests(initSet, T)
     
-    # print("\n" + "="*70)
-    # print("ADDITIONAL EXPERIMENTS")
-    # print("="*70)
-
     # Generating Fig 3(a)
-    # AutMod.showBehavior(initSet,T)
+    AutMod.showBehavior(initSet,T)
 
     # Generating Fig 3(b) - Log Probability Variation
     # AutMod.varyLogProb(initSet,T,unsafe,state,op)
 
     # Generating Fig 3(c)
-    # AutMod.varyC(initSet,T,unsafe,state,op)
+    AutMod.varyC(initSet,T,unsafe,state,op)
