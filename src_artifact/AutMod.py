@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import random
-
+SAVE = True
 class AutMod:
 
     def getNextState(state):
@@ -57,7 +57,7 @@ class AutMod:
             trajs.append(traj)
         return trajs
 
-    def vizTrajs(trajs,logUn=None,save=False,name="Untitled"):
+    def vizTrajs(trajs,logUn=None,save=SAVE,name="Untitled"):
 
         ax = plt.axes(projection='3d')
         ax.set_xlabel('x',fontsize=20,fontweight='bold')
@@ -84,7 +84,7 @@ class AutMod:
             plt.show()
         plt.clf()
         
-    def vizTrajsVal(trajsVal,trajsInVal,logUn=None,save=False,name="Untitled"):
+    def vizTrajsVal(trajsVal,trajsInVal,logUn=None,save=SAVE,name="Untitled"):
 
         ax = plt.axes(projection='3d')
         ax.set_xlabel('x',fontsize=20,fontweight='bold')
@@ -117,7 +117,7 @@ class AutMod:
             plt.show()
         plt.clf()
 
-    def vizTrajsVal2D(trajsVal,logUn=None,unsafe=0.0,state=0,save=False,name="Untitled"):
+    def vizTrajsVal2D(trajsVal,logUn=None,unsafe=0.0,state=0,save=SAVE,name="Untitled"):
 
         lnWd=2
 
@@ -145,7 +145,7 @@ class AutMod:
             plt.show()
         plt.clf()
 
-    def vizTrajsValInVal2D(trajsVal,inValTrajs,logUn=None,unsafe=None,state=0,save=False,name="Untitled"):
+    def vizTrajsValInVal2D(trajsVal,inValTrajs,logUn=None,unsafe=None,state=0,save=SAVE,name="Untitled"):
 
         lnWd=2
 
@@ -177,7 +177,7 @@ class AutMod:
             plt.show()
         plt.clf()
 
-    def vizTrajsSafeUnsafe2D(safeTrajs,unsafeTrajs,safeSamps,unsafeSamps,unsafe=0.0,state=0,save=False,name="Untitled"):
+    def vizTrajsSafeUnsafe2D(safeTrajs,unsafeTrajs,safeSamps,unsafeSamps,unsafe=0.0,state=0,save=SAVE,name="Untitled"):
 
         lnWd=2
 
@@ -217,7 +217,7 @@ class AutMod:
             plt.show()
         plt.clf()
 
-    def vizLogsSafeUnsafe2D(T,safeSamps,unsafeSamps,unsafe=0.0,state=0,save=False,name="Untitled"):
+    def vizLogsSafeUnsafe2D(T,safeSamps,unsafeSamps,unsafe=0.0,state=0,save=SAVE,name="Untitled"):
 
         lnWd=2
 
@@ -274,7 +274,7 @@ class AutMod:
         logUn=logger.genLog()[0]
         K=1300
         ts=time.time()
-        unsafe=-0.121
+        unsafe=-0.3
         state=0
         op='le'
         validTrajs=AutMod.getValidTrajs(initSet,T,K,logUn)
@@ -335,7 +335,7 @@ class AutMod:
         print("Total Trajectories Generated: ",totTrajs*100,"; Valid Trajectories: ",len(valTrajs))
         return (ts,isSafe)
         
-    def vizVaryC(cList,sList,tList,save=False,name="Untitled"):
+    def vizVaryC(cList,sList,tList,save=SAVE,name="Untitled"):
         plt.xlabel(r'$c$',fontsize=20,fontweight = 'bold')
         plt.ylabel(r'Time taken',fontsize=20,fontweight = 'bold')
         L=len(cList)
@@ -410,14 +410,14 @@ class AutMod:
     def showBehavior(initSet,T):
         print("Plotting Behavior")
         trajsL=AutMod.getRandomTrajs(initSet,T,10)
-        AutMod.vizTrajs(trajsL,save=False,name="AutModBehavior")
+        AutMod.vizTrajs(trajsL,save=SAVE,name="AutModBehavior")
     
     def showLogGeneration(initSet,T):
         trajsL=AutMod.getRandomTrajs(initSet,T,1)
         logger=GenLog(trajsL[0])
         logUn=logger.genLog()[0]
         AutMod.vizTrajs(trajsL,logUn,save=SAVE,name="AutModLog3D")
-        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=-0.15,state=0,save=SAVE,name="AutModLogS0")
+        AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=-0.3,state=0,save=SAVE,name="AutModLogS0")
         AutMod.vizTrajsVal2D(trajsL,logUn,unsafe=None,state=1,save=SAVE,name="AutModLogS1")
     
     def showValidTrajs(initSet,T,K):
@@ -437,7 +437,7 @@ class AutMod:
         ts=time.time()-ts
         print("Time taken: ",ts)
         AutMod.vizTrajsVal(valTrajs[:5],inValTrajsIt[:5],logUn,save=SAVE,name="AutModValTrajs")
-        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=-0.15,state=0,save=SAVE,name="AutModValTrajsS0")
+        AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=-0.3,state=0,save=SAVE,name="AutModValTrajsS0")
         AutMod.vizTrajsValInVal2D(valTrajs[:1],inValTrajsIt[:1],logUn,unsafe=None,state=1,save=SAVE,name="AutModValTrajsS1")
 
     def varyC(initSet,T,unsafe,state,op):
@@ -573,7 +573,7 @@ class AutMod:
             validSamplesList.append(len(valTrajs))
             sList.append(isSafe)
             
-            print(f"   Time: {ts:.2f}s, Total Trajs: {totTrajs*100}, Valid: {len(valTrajs)}, Safe: {isSafe}")
+            print(f"   Time: {ts:.2f}s, Total Trajs: {totTrajs*100}, Valid: {len(valTrajs)}, Safe: {isSafe}, PROB_LOG: {probVal}")
             # print("=" * 30)
         
         # Calculate percentage of valid samples
@@ -590,7 +590,7 @@ class AutMod:
         print("% Valid Samples:", percentageValidSamples)
         print("Safety Results:", sList)
 
-    def vizVaryLogProb(probList, tList, totalSamplesList, validSamplesList, percentageValidSamples, save=False, name="Untitled"):
+    def vizVaryLogProb(probList, tList, totalSamplesList, validSamplesList, percentageValidSamples, save=SAVE, name="Untitled"):
         """
         Visualize the variation of logging probability similar to fig3b.py
         """
@@ -721,7 +721,7 @@ if __name__ == "__main__":
     # x_init=-0.2
     # y_init=-0.2
     T=2000
-    SAVE = False
+    
 
     initState=(x_init,y_init)
     initSet=([0.8,1],[0.8,1])
@@ -745,7 +745,7 @@ if __name__ == "__main__":
     AutMod.showBehavior(initSet,T)
 
     # Generating Fig 3(b) - Log Probability Variation
-    # AutMod.varyLogProb(initSet,T,unsafe,state,op)
+    AutMod.varyLogProb(initSet,T,unsafe,state,op)
 
     # Generating Fig 3(c)
     AutMod.varyC(initSet,T,unsafe,state,op)
