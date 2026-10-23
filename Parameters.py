@@ -99,10 +99,10 @@ else:
         exit(0)
 
 # AutMod specific parameters
-AUTMOD_PROBABILITY_LOG = 5  # This corresponds to 20% probability (100/5 = 20%)
+AUTMOD_PROBABILITY_LOG = 3  # This corresponds to 20% probability (100/5 = 20%)
 AUTMOD_DT = 0.01
 AUTMOD_DELTA_STATE = 0.002
-AUTMOD_DELTA_LOG = 0.02
+AUTMOD_DELTA_LOG = 0.01
 
 # Override default parameters when using AutMod
 if 'AUTMOD' in globals() or True:  # Allow AutMod parameters to be used

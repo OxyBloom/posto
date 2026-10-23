@@ -1,0 +1,107 @@
+Parameters set for fig. 3(a..c)
+Parameters set for AutMod (20% log probability)
+Plotting Behavior
+Varying Logging Probability...
+   Time: 11.45s, Total Trajs: 4200, Valid: 1167, Safe: True
+   Time: 5.12s, Total Trajs: 1800, Valid: 1151, Safe: True
+   Time: 9.61s, Total Trajs: 3500, Valid: 1175, Safe: True
+   Time: 8.34s, Total Trajs: 3000, Valid: 1185, Safe: True
+   Time: 13.77s, Total Trajs: 5000, Valid: 1051, Safe: True
+Logging Probability Results:
+PROBABILITY_LOG: [3, 5, 7, 9, 11]
+Time Taken: [11.452143430709839, 5.116379261016846, 9.607831478118896, 8.3423330783844, 13.771894931793213]
+Total Samples: [4200, 1800, 3500, 3000, 5000]
+Valid Samples: [1167, 1151, 1175, 1185, 1051]
+% Valid Samples: [27.785714285714285, 63.94444444444445, 33.57142857142857, 39.5, 21.02]
+Safety Results: [True, True, True, True, True]
+>> c =  0.6
+100 55
+Time Taken:  0.2748122215270996
+Safety:  True
+[Trajs] Safe, Unsafe:  55 0
+[Log] Safe, Unsafe:  94 0
+Total Trajectories Generated:  100 ; Valid Trajectories:  55
+=====================
+
+
+>> c =  0.7
+100 61
+Time Taken:  0.29961180686950684
+Safety:  True
+[Trajs] Safe, Unsafe:  61 0
+[Log] Safe, Unsafe:  108 0
+Total Trajectories Generated:  100 ; Valid Trajectories:  61
+=====================
+
+
+>> c =  0.8
+Time Taken:  0.0038967132568359375
+Safety:  False
+[Trajs] Safe, Unsafe:  0 0
+[Log] Safe, Unsafe:  78 2
+Total Trajectories Generated:  0 ; Valid Trajectories:  0
+=====================
+
+
+>> c =  0.9
+100 33
+200 73
+300 100
+400 129
+Time Taken:  1.1030917167663574
+Safety:  True
+[Trajs] Safe, Unsafe:  29 0
+[Log] Safe, Unsafe:  97 0
+Total Trajectories Generated:  400 ; Valid Trajectories:  129
+=====================
+
+
+>> c =  0.99
+100 28
+200 55
+300 85
+400 117
+500 151
+600 187
+700 214
+800 241
+900 268
+1000 308
+1100 333
+1200 371
+1300 404
+1400 442
+1500 459
+1600 488
+1700 518
+1800 554
+1900 576
+2000 603
+2100 641
+2200 679
+2300 710
+2400 741
+2500 775
+2600 814
+2700 837
+2800 873
+2900 905
+3000 924
+3100 951
+3200 988
+3300 1022
+3400 1054
+3500 1090
+3600 1118
+3700 1150
+Time Taken:  10.137338876724243
+Safety:  True
+[Trajs] Safe, Unsafe:  32 0
+[Log] Safe, Unsafe:  83 0
+Total Trajectories Generated:  3700 ; Valid Trajectories:  1150
+=====================
+
+
+[0.2748122215270996, 0.29961180686950684, 0.0038967132568359375, 1.1030917167663574, 10.137338876724243]
+[True, True, False, True, True]
+

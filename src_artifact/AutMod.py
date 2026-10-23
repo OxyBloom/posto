@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.art3d as art3d
 import random
-SAVE = True
+SAVE = False
 class AutMod:
 
     def getNextState(state):
@@ -742,10 +742,12 @@ if __name__ == "__main__":
     # AutMod.runSafeUnsafeTests(initSet, T)
     
     # Generating Fig 3(a)
-    AutMod.showBehavior(initSet,T)
+    # AutMod.showBehavior(initSet,T)
 
     # Generating Fig 3(b) - Log Probability Variation
-    AutMod.varyLogProb(initSet,T,unsafe,state,op)
+    # AutMod.varyLogProb(initSet,T,unsafe,state,op)
 
     # Generating Fig 3(c)
-    AutMod.varyC(initSet,T,unsafe,state,op)
+    # AutMod.varyC(initSet,T,unsafe,state,op)
+
+    # AutMod.
